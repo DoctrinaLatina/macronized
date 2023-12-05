@@ -30,7 +30,7 @@ done <$fin
 
 cp $F_EN $F_EN_TMP
 # format english text
-sed -i 's/^/\\noindent\\emph{\\scriptsize /' $F_EN_TMP
+sed -i 's/^/\\noindent\\emph{\\scriptsize\\fontseries{cl}\\selectfont /' $F_EN_TMP
 # end of line
 sed -i 's/$/}\\end{absolutelynopagebreak}/' $F_EN_TMP
 
@@ -56,12 +56,15 @@ echo """
   Path = ./../fonts/junicode2/,
   Extension = .otf,
   Numbers={Lining,Proportional},
+  Punctuation={OldStyle},
   UprightFont = *-Regular,
   BoldFont = *-Bold,
   ItalicFont = *-Italic,
   BoldItalicFont= *-BoldItalic,
   FontFace={mb}{n}{*-Semibold},
   FontFace={eb}{n}{*-ExpandedBold},
+  FontFace={cl}{n}{*-CondensedLight},
+  FontFace={cl}{it}{*-CondensedLightItalic},
 ]{Junicode}
 
 \usepackage{indentfirst}
