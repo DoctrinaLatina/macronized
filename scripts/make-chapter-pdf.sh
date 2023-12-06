@@ -24,7 +24,7 @@ VERSE=1
 fin=$FILE
 while read -r LINE; do
 #echo "\\filbreak\\noindent\\textsuperscript{$VERSE}\hspace{1ex}{\Large $LINE}\\newline" >> $F_TMP 
-echo "\\subsection{$VERSE.}\begin{absolutelynopagebreak}{\large\fontseries{mb}\selectfont $LINE}\\newline" >> $F_TMP 
+echo "\\subsection{$VERSE.}\begin{absolutelynopagebreak}{\large\large\fontseries{mb}\selectfont $LINE}\\newline" >> $F_TMP
 VERSE=$(expr $VERSE + 1)
 done <$fin
 
@@ -54,17 +54,18 @@ echo """
 \usepackage{fontspec}
 \setmainfont [
   Path = ./../fonts/junicode2/,
-  Extension = .otf,
+  Extension = .ttf,
   Numbers={Lining,Proportional},
-  Punctuation={OldStyle},
   UprightFont = *-Regular,
   BoldFont = *-Bold,
   ItalicFont = *-Italic,
   BoldItalicFont= *-BoldItalic,
-  FontFace={mb}{n}{*-Semibold},
-  FontFace={eb}{n}{*-ExpandedBold},
-  FontFace={cl}{n}{*-CondensedLight},
-  FontFace={cl}{it}{*-CondensedLightItalic},
+  FontFace={mb}{n}{*-Smbold},
+  FontFace={mb}{it}{*-SmboldItalic},
+  FontFace={eb}{n}{*-ExpBold},
+  FontFace={eb}{it}{*-ExpBoldItalic},
+  FontFace={cl}{n}{*-CondLight},
+  FontFace={cl}{it}{*-CondLightItalic},
 ]{Junicode}
 
 \usepackage{indentfirst}
@@ -74,10 +75,10 @@ echo """
 \usepackage{needspace}
 
 \titleformat{\section}[hang]
-  {\LARGE\bfseries\centering}
-  {\thesection}{0em}{#1}[]
+  {\large\addfontfeature{LetterSpace=26.0}\fontseries{eb}\selectfont\centering}
+  {\thesection}{0em}{\fontdimen2\font=10pt — #1 —}[]
 
-\titlespacing{\section}{0pt}{0ex}{6ex}
+\titlespacing{\section}{0pt}{0ex}{8ex}
 
 \titleformat{\subsection}[runin]
   {\fontseries{eb}\selectfont}
@@ -107,7 +108,7 @@ echo """
 
 \begin{document}
 
-\pagestyle{empty} 
+\pagestyle{empty}
 
 \begin{flushleft}
 """ >> $TMP_DIR/000.tex
