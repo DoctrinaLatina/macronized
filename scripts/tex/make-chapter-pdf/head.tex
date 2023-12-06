@@ -1,0 +1,60 @@
+\documentclass[10pt,openany]{book}
+
+\usepackage[
+  papersize={8.5in,11in},
+  layout=letterpaper,
+  right=1.5in,
+  left=1.5in,
+  top=0.75in,
+  bottom=0.75in
+]{geometry}
+
+\usepackage{fontspec}
+\setmainfont [
+  Path = ./../fonts/junicode2/,
+  Extension = .ttf,
+  Numbers={Lining,Proportional},
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont= *-BoldItalic,
+  FontFace={mb}{n}{*-Smbold},
+  FontFace={mb}{it}{*-SmboldItalic},
+  FontFace={eb}{n}{*-ExpBold},
+  FontFace={eb}{it}{*-ExpBoldItalic},
+  FontFace={cl}{n}{*-CondLight},
+  FontFace={cl}{it}{*-CondLightItalic},
+]{Junicode}
+
+\newenvironment{absolutelynopagebreak}
+  {\par\nobreak\vfil\penalty0\vfilneg
+   \vtop\bgroup}
+  {\par\xdef\tpd{\the\prevdepth}\egroup
+   \prevdepth=\tpd}
+
+\hyphenpenalty 10000
+\exhyphenpenalty 10000
+
+\usepackage{indentfirst}
+\usepackage[skip=10pt plus1pt, indent=0pt]{parskip}
+
+\usepackage[explicit]{titlesec}
+\usepackage{needspace}
+
+\titleformat{\section}[hang]
+  {\large\addfontfeature{LetterSpace=26.0}\fontseries{eb}\selectfont\centering}
+  {\thesection}{0em}{\fontdimen2\font=10pt — #1 —}[]
+
+\titlespacing{\section}{0pt}{0ex}{8ex}
+
+\titleformat{\subsection}[runin]
+  {\fontseries{eb}\selectfont}
+  {\thesubsection}{0em}{\textsuperscript{#1}}[]
+
+\setcounter{secnumdepth}{0}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{flushleft}

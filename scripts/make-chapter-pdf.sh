@@ -2,125 +2,71 @@
 
 set -x
 
-FILE="$1"
+FILE_LATIN="$1"
 TITLE="$2"
 
-SCRIPT_DIR=$(dirname "$0")
-LA_DIR=$(dirname "$FILE")
-EN_DIR=$LA_DIR/english
-TMP_DIR=$SCRIPT_DIR/.tmp
+DIR_CURRENT=$(pwd)
+DIR_SCRIPT=$(dirname "$0")
 
-rm -rfv $TMP_DIR
-mkdir -v $TMP_DIR
+DIR_LATIN=$(dirname "$FILE_LATIN")
+DIR_ENGLISH=$DIR_LATIN/english
+DIR_TMP=$DIR_SCRIPT/.tmp
+NUM=$(basename --suffix=".txt" "$FILE_LATIN")
+FILE_LATIN_TMP="$DIR_TMP"/"$NUM".tmp
+FILE_ENGLISH="$DIR_ENGLISH"/"$NUM".txt
+FILE_ENGLISH_TMP="$DIR_TMP"/"$NUM"EN.tmp
+FILE_TEX=$DIR_TMP/$NUM.tex
 
-NUM=$(basename --suffix=".txt" "$FILE")
-echo $TMP_DIR/$NUM
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# create directory to dump all our temporory files into
+rm -rfv $DIR_TMP
+mkdir -v $DIR_TMP
 
-F_TMP="$TMP_DIR"/"$NUM".tmp
-F_EN="$EN_DIR"/"$NUM".txt
-F_EN_TMP="$TMP_DIR"/"$NUM"EN.tmp
-
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# process the Latin text and add verse numbers
 VERSE=1
-fin=$FILE
+fin=$FILE_LATIN
 while read -r LINE; do
-#echo "\\filbreak\\noindent\\textsuperscript{$VERSE}\hspace{1ex}{\Large $LINE}\\newline" >> $F_TMP 
-echo "\\subsection{$VERSE.}\begin{absolutelynopagebreak}{\large\large\fontseries{mb}\selectfont $LINE}\\newline" >> $F_TMP
+PRELINE="\begin{absolutelynopagebreak}{\large\fontseries{mb}\selectfont"
+POSTLINE="}\newline"
+echo \
+  "\subsection{$VERSE.} $PRELINE $LINE $POSTLINE" \
+  >> $FILE_LATIN_TMP
 VERSE=$(expr $VERSE + 1)
 done <$fin
 
-cp $F_EN $F_EN_TMP
-# format english text
-sed -i 's/^/\\noindent\\emph{\\scriptsize\\fontseries{cl}\\selectfont /' $F_EN_TMP
-# end of line
-sed -i 's/$/}\\end{absolutelynopagebreak}/' $F_EN_TMP
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# process the English text next
+fin=$FILE_ENGLISH
+while read -r LINE; do
+PRELINE="\noindent\emph{\scriptsize\fontseries{cl}\selectfont"
+POSTLINE="}\end{absolutelynopagebreak}"
+echo \
+  "$PRELINE $LINE $POSTLINE" \
+  >> $FILE_ENGLISH_TMP
+done <$fin
 
-F_TEX=$TMP_DIR/$NUM.tex
-# interleave
-awk '{print; if(getline < "'$F_EN_TMP'") print}' $F_TMP >> $F_TEX
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# interleave the Latin and English, final formatting
+# TODO: replace with sed?
+awk \
+  '{print; if(getline < "'$FILE_ENGLISH_TMP'") print}' \
+  $FILE_LATIN_TMP >> $FILE_TEX
+# add empty line between each Latin-English paired verse
+sed -i '0~2 a\\' $FILE_TEX
 
-# line breaks
-sed -i '0~2 a\\' $F_TEX
+# add chapter title to beginning
+CHAPTER=$((10#$(basename --suffix=".tex" "$FILE_TEX")))
+STR="\\\section{$TITLE $CHAPTER}\n"
+sed -i "1s/^/$STR/" $FILE_TEX
+echo "\Needspace{8\baselineskip}" >> $FILE_TEX
 
-# chapter title
-NAME=$(basename --suffix=".tex" "$F_TEX")
-NUM=$((10#$NAME))
-STR="\\\section{$TITLE $NUM}\n"
-sed -i "1s/^/$STR/" $F_TEX
-echo "\Needspace{8\baselineskip}" >> $F_TEX
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# marshall all the tex files into one and feed it to xelatex
+cp $DIR_SCRIPT/tex/make-chapter-pdf/head.tex $DIR_TMP/000.tex
+cp $DIR_SCRIPT/tex/make-chapter-pdf/tail.tex $DIR_TMP/999.tex
+cat $DIR_TMP/*.tex > $DIR_TMP/out.tex
 
-echo """
-\documentclass[10pt,openany]{book}
+xelatex -halt-on-error -output-directory $DIR_TMP $DIR_TMP/out.tex
 
-\usepackage{fontspec}
-\setmainfont [
-  Path = ./../fonts/junicode2/,
-  Extension = .ttf,
-  Numbers={Lining,Proportional},
-  UprightFont = *-Regular,
-  BoldFont = *-Bold,
-  ItalicFont = *-Italic,
-  BoldItalicFont= *-BoldItalic,
-  FontFace={mb}{n}{*-Smbold},
-  FontFace={mb}{it}{*-SmboldItalic},
-  FontFace={eb}{n}{*-ExpBold},
-  FontFace={eb}{it}{*-ExpBoldItalic},
-  FontFace={cl}{n}{*-CondLight},
-  FontFace={cl}{it}{*-CondLightItalic},
-]{Junicode}
-
-\usepackage{indentfirst}
-\usepackage[skip=10pt plus1pt, indent=0pt]{parskip}
-
-\usepackage[explicit]{titlesec}
-\usepackage{needspace}
-
-\titleformat{\section}[hang]
-  {\large\addfontfeature{LetterSpace=26.0}\fontseries{eb}\selectfont\centering}
-  {\thesection}{0em}{\fontdimen2\font=10pt — #1 —}[]
-
-\titlespacing{\section}{0pt}{0ex}{8ex}
-
-\titleformat{\subsection}[runin]
-  {\fontseries{eb}\selectfont}
-  {\thesubsection}{0em}{\textsuperscript{#1}}[]
-
-\setcounter{secnumdepth}{0}
-
-\usepackage[
-  papersize={8.75in,11.25in},
-  layout=letterpaper,
-  layouthoffset=0.125in,
-  layoutvoffset=0.125in,
-  right=1.5in,
-  left=1.5in,
-  top=0.75in,
-  bottom=0.75in
-]{geometry}
-
-\newenvironment{absolutelynopagebreak}
-  {\par\nobreak\vfil\penalty0\vfilneg
-   \vtop\bgroup}
-  {\par\xdef\tpd{\the\prevdepth}\egroup
-   \prevdepth=\tpd}
-
-\hyphenpenalty 10000
-\exhyphenpenalty 10000
-
-\begin{document}
-
-\pagestyle{empty}
-
-\begin{flushleft}
-""" >> $TMP_DIR/000.tex
-
-echo """
-\end{flushleft}
-
-\end{document}
-""" >> $TMP_DIR/999.tex
-
-cat $TMP_DIR/*.tex > $TMP_DIR/out.tex
-
-xelatex -halt-on-error -output-directory $TMP_DIR $TMP_DIR/out.tex
-
-cp $TMP_DIR/*.pdf $SCRIPT_DIR
+cp $DIR_TMP/*.pdf $DIR_CURRENT
