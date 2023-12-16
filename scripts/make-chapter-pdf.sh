@@ -16,6 +16,7 @@ FILE_LATIN_TMP="$DIR_TMP"/"$NUM".tmp
 FILE_ENGLISH="$DIR_ENGLISH"/"$NUM".txt
 FILE_ENGLISH_TMP="$DIR_TMP"/"$NUM"EN.tmp
 FILE_TEX=$DIR_TMP/$NUM.tex
+CHAPTER=$((10#$(basename --suffix=".tex" "$FILE_TEX")))
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # create directory to dump all our temporory files into
@@ -30,7 +31,7 @@ while read -r LINE; do
 PRELINE="\begin{absolutelynopagebreak}{\large\fontseries{mb}\selectfont"
 POSTLINE="}\newline"
 echo \
-  "\subsection{$VERSE.} $PRELINE $LINE $POSTLINE" \
+  "\subsection{$VERSE} $PRELINE $LINE $POSTLINE" \
   >> $FILE_LATIN_TMP
 VERSE=$(expr $VERSE + 1)
 done <$fin
@@ -56,7 +57,6 @@ awk \
 sed -i '0~2 a\\' $FILE_TEX
 
 # add chapter title to beginning
-CHAPTER=$((10#$(basename --suffix=".tex" "$FILE_TEX")))
 STR="\\\section{$TITLE $CHAPTER}\n"
 sed -i "1s/^/$STR/" $FILE_TEX
 echo "\Needspace{8\baselineskip}" >> $FILE_TEX

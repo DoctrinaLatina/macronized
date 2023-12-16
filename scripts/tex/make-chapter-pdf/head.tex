@@ -18,12 +18,14 @@
   BoldFont = *-Bold,
   ItalicFont = *-Italic,
   BoldItalicFont= *-BoldItalic,
-  FontFace={mb}{n}{*-Smbold},
-  FontFace={mb}{it}{*-SmboldItalic},
-  FontFace={eb}{n}{*-ExpBold},
-  FontFace={eb}{it}{*-ExpBoldItalic},
   FontFace={cl}{n}{*-CondLight},
   FontFace={cl}{it}{*-CondLightItalic},
+  FontFace={eb}{n}{*-ExpBold},
+  FontFace={eb}{it}{*-ExpBoldItalic},
+  FontFace={en}{n}{*-Exp},
+  FontFace={en}{it}{*-ExpItalic},
+  FontFace={mb}{n}{*-Smbold},
+  FontFace={mb}{it}{*-SmboldItalic},
 ]{Junicode}
 
 \newenvironment{absolutelynopagebreak}
@@ -42,13 +44,13 @@
 \usepackage{needspace}
 
 \titleformat{\section}[hang]
-  {\large\addfontfeature{LetterSpace=26.0}\fontseries{eb}\selectfont\centering}
+  {\addfontfeature{LetterSpace=26.0}\fontseries{eb}\selectfont\centering}
   {\thesection}{0em}{\fontdimen2\font=10pt #1 }[]
 
 \titlespacing{\section}{0pt}{0ex}{8ex}
 
 \titleformat{\subsection}[runin]
-  {\fontseries{eb}\selectfont}
+  {\fontseries{en}\selectfont}
   {\thesubsection}{0em}{\textsuperscript{#1}}[]
 
 \setcounter{secnumdepth}{0}
