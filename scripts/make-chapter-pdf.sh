@@ -28,23 +28,27 @@ mkdir -v $DIR_TMP
 VERSE=1
 fin=$FILE_LATIN
 while read -r LINE; do
-PRELINE="\begin{absolutelynopagebreak}{\large\fontseries{mb}\selectfont"
+PRELINE="\begin{absolutelynopagebreak}{\addfontfeature{LetterSpace=1.5}\Large "
 POSTLINE="}\newline"
 echo \
-  "\subsection{$VERSE} $PRELINE $LINE $POSTLINE" \
+  "$PRELINE $LINE $POSTLINE" \
   >> $FILE_LATIN_TMP
 VERSE=$(expr $VERSE + 1)
 done <$fin
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # process the English text next
+VERSE=1
 fin=$FILE_ENGLISH
 while read -r LINE; do
-PRELINE="\noindent\emph{\scriptsize\fontseries{cl}\selectfont"
-POSTLINE="}\end{absolutelynopagebreak}"
+FONT="\tiny"
+MARGIN="\marginpar{\addfontfeature{LetterSpace=5.0}$FONT $CHAPTER : $VERSE}"
+PRELINE="\noindent\emph{\fontseries{cl}\selectfont\tiny"
+POSTLINE="}\end{absolutelynopagebreak} $MARGIN \vspace{0.075in}"
 echo \
   "$PRELINE $LINE $POSTLINE" \
   >> $FILE_ENGLISH_TMP
+VERSE=$(expr $VERSE + 1)
 done <$fin
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -59,7 +63,7 @@ sed -i '0~2 a\\' $FILE_TEX
 # add chapter title to beginning
 STR="\\\section{$TITLE $CHAPTER}\n"
 sed -i "1s/^/$STR/" $FILE_TEX
-echo "\Needspace{8\baselineskip}" >> $FILE_TEX
+#echo "\Needspace{8\baselineskip}" >> $FILE_TEX
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # marshall all the tex files into one and feed it to xelatex

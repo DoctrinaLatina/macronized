@@ -1,4 +1,4 @@
-\documentclass[10pt,openany]{book}
+\documentclass[10pt]{article}
 
 \usepackage[
   papersize={8.5in,11in},
@@ -6,27 +6,45 @@
   right=1.5in,
   left=1.5in,
   top=0.75in,
-  bottom=0.75in
+  bottom=0.75in,
+  marginparwidth=0.4in,
+  marginparsep=0.0in
 ]{geometry}
 
 \usepackage{fontspec}
+%\setmainfont [
+  %Path = ./../fonts/junicode2/,
+  %Extension = .ttf,
+  %Numbers={Lining,Proportional},
+  %UprightFont = *-Regular,
+  %BoldFont = *-Bold,
+  %ItalicFont = *-Italic,
+  %BoldItalicFont= *-BoldItalic,
+  %FontFace={cl}{n}{*-CondLight},
+  %FontFace={cl}{it}{*-CondLightItalic},
+  %FontFace={eb}{n}{*-ExpBold},
+  %FontFace={eb}{it}{*-ExpBoldItalic},
+  %FontFace={en}{n}{*-Exp},
+  %FontFace={en}{it}{*-ExpItalic},
+  %FontFace={mb}{n}{*-Smbold},
+  %FontFace={mb}{it}{*-SmboldItalic},
+%]{Junicode}
+
+
 \setmainfont [
-  Path = ./../fonts/junicode2/,
+  Path = ./../fonts/eczar/,
   Extension = .ttf,
-  Numbers={Lining,Proportional},
   UprightFont = *-Regular,
   BoldFont = *-Bold,
-  ItalicFont = *-Italic,
-  BoldItalicFont= *-BoldItalic,
-  FontFace={cl}{n}{*-CondLight},
-  FontFace={cl}{it}{*-CondLightItalic},
-  FontFace={eb}{n}{*-ExpBold},
-  FontFace={eb}{it}{*-ExpBoldItalic},
-  FontFace={en}{n}{*-Exp},
-  FontFace={en}{it}{*-ExpItalic},
-  FontFace={mb}{n}{*-Smbold},
-  FontFace={mb}{it}{*-SmboldItalic},
-]{Junicode}
+  ItalicFont = *-Medium,
+  BoldItalicFont= *-Bold,
+  FontFace={cl}{n}{*-Regular},
+  FontFace={cl}{it}{*-Regular},
+  FontFace={eb}{n}{*-ExtraBold},
+  FontFace={eb}{it}{*-ExtraBold},
+  FontFace={mb}{n}{*-SemiBold},
+  FontFace={mb}{it}{*-SemiBold},
+]{Eczar}
 
 \newenvironment{absolutelynopagebreak}
   {\par\nobreak\vfil\penalty0\vfilneg
@@ -41,22 +59,25 @@
 \usepackage[skip=10pt plus1pt, indent=0pt]{parskip}
 
 \usepackage[explicit]{titlesec}
+\usepackage{marginnote}
 \usepackage{needspace}
 
 \titleformat{\section}[hang]
-  {\addfontfeature{LetterSpace=26.0}\fontseries{eb}\selectfont\centering}
+  {\addfontfeature{LetterSpace=30.0}\fontseries{mb}\selectfont\centering}
   {\thesection}{0em}{\fontdimen2\font=10pt #1 }[]
 
 \titlespacing{\section}{0pt}{0ex}{8ex}
 
-\titleformat{\subsection}[runin]
-  {\fontseries{en}\selectfont}
-  {\thesubsection}{0em}{\textsuperscript{#1}}[]
+%\titleformat{\subsection}[runin]
+%  {\fontseries{en}\selectfont}
+%  {\thesubsection}{0em}{\textsuperscript{#1}}[]
 
 \setcounter{secnumdepth}{0}
 
 \begin{document}
 
 \pagestyle{empty}
+
+\reversemarginpar
 
 \begin{flushleft}
