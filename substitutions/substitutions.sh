@@ -28,6 +28,7 @@ function _replace() {
   sed -i 's/\bIntelli/Intelle/g' $1
   sed -i 's/\bINTELLI/INTELLE/g' $1
 
+  # exultātiō -> exsultātiō
   # exultō -> exsultō
   sed -i 's/\bexult/exsult/g' $1
   sed -i 's/\bExult/Exsult/g' $1
