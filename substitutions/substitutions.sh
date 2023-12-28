@@ -22,6 +22,16 @@ function _replace() {
   sed -i 's/\bāmēn\b/āmen/g' $1
   sed -i 's/\bĀmēn\b/Āmen/g' $1
   sed -i 's/\bĀMĒN\b/ĀMEN/g' $1
+
+  # intelligō -> intellegō
+  sed -i 's/\bintelli/intelle/g' $1
+  sed -i 's/\bIntelli/Intelle/g' $1
+  sed -i 's/\bINTELLI/INTELLE/g' $1
+
+  # exultō -> exsultō
+  sed -i 's/\bexult/exsult/g' $1
+  sed -i 's/\bExult/Exsult/g' $1
+  sed -i 's/\bEXULT/EXSULT/g' $1
 }
 
 if [ $# -eq 0 ]; then
