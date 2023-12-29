@@ -51,6 +51,10 @@ function _replace() {
   # Israel -> Isrāhēl
   sed -i 's/\bIsrael\b/Isrāhēl/g' $1
   sed -i 's/\bIsrāēl\b/Isrāhēl/g' $1
+
+  # Sion -> Siōn
+  sed -i 's/\bSion\b/Siōn/g' $1
+  sed -i 's/\bSīōn\b/Siōn/g' $1
 }
 
 if [ $# -eq 0 ]; then
