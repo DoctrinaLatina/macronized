@@ -37,6 +37,10 @@ function _replace() {
   # sēmetipse -> sēmet ipse
   sed -i 's/\bsēmetip/sēmet ip/g' $1
   sed -i 's/\bsemetip/sēmet ip/g' $1
+
+  # annūntiō -> adnūntiō
+  sed -i 's/\bannūnti/adnūnti/g' $1
+  sed -i 's/\bAnnūnti/Adnūnti/g' $1
 }
 
 if [ $# -eq 0 ]; then
