@@ -3,6 +3,15 @@
 set -x
 
 function _replace() {
+  # It appears that the final 'i' wasn't always short for these words; some
+  # uses would lengthen it. We will favor the long vowel ending in order to
+  # make pronunciation more "natural" and to find some small common ground with
+  # modern ecclesiastical pronunciation.
+  # mihi -> mihī
+  # tibi -> tibī
+  # sibi -> sibī
+  # ibi -> ibī
+  # ubi -> ubī
   sed -i 's/\bmihi\b/mihī/g' $1
   sed -i 's/\bMihi\b/Mihī/g' $1
 
@@ -18,6 +27,9 @@ function _replace() {
   sed -i 's/\bubi\b/ubī/g' $1
   sed -i 's/\bUbi\b/Ubī/g' $1
 
+  # Favor short 'e' to align with pronunciation that became standardized
+  # in the early middle ages (or earier).
+  # āmēn -> āmen
   sed -i 's/\bamen\b/āmen/g' $1
   sed -i 's/\bāmēn\b/āmen/g' $1
   sed -i 's/\bĀmēn\b/Āmen/g' $1
