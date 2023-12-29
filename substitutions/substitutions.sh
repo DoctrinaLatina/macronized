@@ -33,6 +33,10 @@ function _replace() {
   sed -i 's/\bexult/exsult/g' $1
   sed -i 's/\bExult/Exsult/g' $1
   sed -i 's/\bEXULT/EXSULT/g' $1
+
+  # sēmetipse -> sēmet ipse
+  sed -i 's/\bsēmetip/sēmet ip/g' $1
+  sed -i 's/\bsemetip/sēmet ip/g' $1
 }
 
 if [ $# -eq 0 ]; then
