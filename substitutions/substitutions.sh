@@ -41,6 +41,16 @@ function _replace() {
   # annūntiō -> adnūntiō
   sed -i 's/\bannūnti/adnūnti/g' $1
   sed -i 's/\bAnnūnti/Adnūnti/g' $1
+
+  # Regularize usage of "a/ab"
+  # abs tē -> ā tē
+  sed -i 's/\babs tē\b/ā tē/g' $1
+  sed -i 's/\babs te\b/ā tē/g' $1
+  sed -i 's/\bAbs te\b/Ā tē/g' $1
+
+  # Israel -> Isrāhēl
+  sed -i 's/\bIsrael\b/Isrāhēl/g' $1
+  sed -i 's/\bIsrāēl\b/Isrāhēl/g' $1
 }
 
 if [ $# -eq 0 ]; then
