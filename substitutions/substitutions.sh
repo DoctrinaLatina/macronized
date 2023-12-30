@@ -67,6 +67,19 @@ function _replace() {
   # Sion -> Siōn
   sed -i 's/\bSion\b/Siōn/g' $1
   sed -i 's/\bSīōn\b/Siōn/g' $1
+
+  # suppress rare first person singular future indicative form
+  # mētībor -> mētiar
+  sed -i 's/\bmetibor\b/mētiar/g' $1
+  sed -i 's/\bmētībor\b/mētiar/g' $1
+  sed -i 's/\bMētībor\b/Mētiar/g' $1
+
+  # exurgō -> exsurgō
+  # catch mistake that snuck in...
+  sed -i 's/\bExurgē\b/Exsurge/g' $1
+  sed -i 's/\bexurgē\b/exsurge/g' $1
+  sed -i 's/\bexurg/exsurg/g' $1
+  sed -i 's/\bExurg/Exsurg/g' $1
 }
 
 if [ $# -eq 0 ]; then
