@@ -80,6 +80,12 @@ function _replace() {
   sed -i 's/\bexurgē\b/exsurge/g' $1
   sed -i 's/\bexurg/exsurg/g' $1
   sed -i 's/\bExurg/Exsurg/g' $1
+
+  # Remove alternative form of "hīs"
+  sed -i 's/\bIĪS\b/HĪS/g' $1
+  sed -i 's/\bIīs\b/Hīs/g' $1
+  sed -i 's/\biīs\b/hīs/g' $1
+  sed -i 's/\biis\b/hīs/g' $1
 }
 
 if [ $# -eq 0 ]; then
