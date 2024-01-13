@@ -86,6 +86,10 @@ function _replace() {
   sed -i 's/\bIīs\b/Hīs/g' $1
   sed -i 's/\biīs\b/hīs/g' $1
   sed -i 's/\biis\b/hīs/g' $1
+
+  # lacryma -> lacrima
+  sed -i 's/\bLacrym/Lacrim/g' $1
+  sed -i 's/\blacrym/lacrim/g' $1
 }
 
 if [ $# -eq 0 ]; then
