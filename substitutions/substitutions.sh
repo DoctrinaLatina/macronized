@@ -35,6 +35,10 @@ function _replace() {
   sed -i 's/\bĀmēn\b/Āmen/g' $1
   sed -i 's/\bĀMĒN\b/ĀMEN/g' $1
 
+  # appropinquō -> adpropinquō
+  sed -i 's/\bappropinqu/adpropinqu/g' $1
+  sed -i 's/\bAppropinqu/Adpropinqu/g' $1
+
   # intelligō -> intellegō
   sed -i 's/\bintelli/intelle/g' $1
   sed -i 's/\bIntelli/Intelle/g' $1
@@ -90,6 +94,81 @@ function _replace() {
   # lacryma -> lacrima
   sed -i 's/\bLacrym/Lacrim/g' $1
   sed -i 's/\blacrym/lacrim/g' $1
+
+  # Normalize "ph" digraph to "f" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  # Alphaeus -> Alfeus
+  sed -i 's/\bAlphae/Alfe/g' $1
+
+  # Asaph -> Āsāf
+  sed -i 's/\ASAPH\b/ĀSĀF/g' $1
+  sed -i 's/\bAsaph\b/Āsāf/g' $1
+
+  # Beelphegor -> Baalfegor
+  sed -i 's/\bBeelphegor\b/Baalfegor/g' $1
+
+  # blasphēmia -> blasfēmia
+  sed -i 's/\bBlasphēmi/Blasfēmi/g' $1
+  sed -i 's/\bblasphēmi/blasfēmia/g' $1
+
+  # blasphēmō -> blasfēmō
+  sed -i 's/\bBlasphēm/Blasfēm/g' $1
+  sed -i 's/\bblasphēm/blasfēm/g' $1
+
+  # Capharnāum -> Cafarnāum
+  sed -i 's/\bCAPHARNĀUM\b/CAFARNĀUM/g' $1
+  sed -i 's/\bCapharnāum\b/Cafarnāum/g' $1
+
+  # colaphus -> colafus
+  sed -i 's/\bColaph/Colaf/g' $1
+  sed -i 's/\bcolaph/colaf/g' $1
+
+  # cophinus -> cofinus
+  sed -i 's/\bCOPHIN/COFIN/g' $1
+  sed -i 's/\bcophin/cofin/g' $1
+
+  # Ephraim -> Efraim
+  sed -i 's/\EPHRAIM\b/EFRAIM/g' $1
+  sed -i 's/\bEphraim\b/Efraim/g' $1
+
+  # Ephrata -> Efrata
+  sed -i 's/\bEPHRATA\b/EFRATA/g' $1
+  sed -i 's/\bEphrata\b/Efrata/g' $1
+
+  # gazophylacium -> gazofilacium
+  sed -i 's/\bGazophylaci/Gazofilaci/g' $1
+  sed -i 's/\bgazophylaci/gazofilaci/g' $1
+
+  # Ioseph -> Iōsēf
+  sed -i 's/\bIOSEPH\b/IŌSĒF/g' $1
+  sed -i 's/\bIoseph\b/Iōsēf/g' $1
+  sed -i 's/\bIōsēph\b/Iōsēf/g' $1
+
+  # orphanus -> orfanus
+  sed -i 's/\bORPHAN/ORFAN/g' $1
+  sed -i 's/\borphan/orfan/g' $1
+
+  # phantasma -> fantasma
+  sed -i 's/\bPhantasma/Fantasma/g' $1
+  sed -i 's/\bphantasma/fantasma/g' $1
+
+  # pharetra -> faretra
+  sed -i 's/\bPHARETR/FARETR/g' $1
+  sed -i 's/\bPharetr/Faretr/g' $1
+  sed -i 's/\bpharetr/faretr/g' $1
+
+  # (pseudo)prophēta -> (pseudo)profēta
+  sed -i 's/PROPHĒT/PROFĒT/g' $1
+  sed -i 's/Prophēt/Profēt/g' $1
+  sed -i 's/prophēt/profēt/g' $1
+  sed -i 's/\bprophet/profēt/g' $1
+
+  # sulphur -> sulfur
+  sed -i 's/\bSULPHUR/SULFUR/g' $1
+  sed -i 's/\bsulphur/sulfur/g' $1
+
+  # Syrophoenissa -> Syrofoeniss
+  sed -i 's/\bSyrophoeniss/Syrofoeniss/g' $1
 }
 
 if [ $# -eq 0 ]; then
