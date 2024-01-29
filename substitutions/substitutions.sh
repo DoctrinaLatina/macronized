@@ -116,8 +116,8 @@ function _replace() {
   sed -i 's/\bblasphēm/blasfēm/g' $1
 
   # Capharnāum -> Cafarnāum
-  sed -i 's/\bCAPHARNĀUM\b/CAFARNĀUM/g' $1
-  sed -i 's/\bCapharnāum\b/Cafarnāum/g' $1
+  sed -i 's/\bCAPHARNAUM\b/CAFARNAUM/g' $1
+  sed -i 's/\bCapharnaum\b/Cafarnaum/g' $1
 
   # colaphus -> colafus
   sed -i 's/\bColaph/Colaf/g' $1
