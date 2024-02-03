@@ -100,10 +100,24 @@ function _replace() {
   sed -i 's/\bCynomi/Cinomi/g' $1
   sed -i 's/\bcynomi/cinomi/g' $1
 
+  # Hierosolyma -> Hierosolima
+  sed -i 's/\bHierosolym/Hierosolim/g' $1
+
+  # Hierosolymītae -> Hierosolimītae
+  sed -i 's/\bHierosolymīt/Hierosolimīt/g' $1
+
+  # Hierosolymītānus -> Hierosolimītānus
+  sed -i 's/\bHierosolymītān/Hierosolimītān/g' $1
+  sed -i 's/\bhierosolymītān/hierosolimītān/g' $1
+
   # hymnus -> himnus
   sed -i 's/\bHYMN/HIMN/g' $1
   sed -i 's/\bHymn/Himn/g' $1
   sed -i 's/\bhymn/himn/g' $1
+
+  # hypocrita -> hipocrita
+  sed -i 's/\bHypocrit/Hipocrit/g' $1
+  sed -i 's/\bhypocrit/hipocrit/g' $1
 
   # hyssōpum -> hissōpum
   sed -i 's/\bHyssōp/Hissōp/g' $1
@@ -113,9 +127,21 @@ function _replace() {
   sed -i 's/\bLacrym/Lacrim/g' $1
   sed -i 's/\blacrym/lacrim/g' $1
 
+  # myrrha -> mirra
+  sed -i 's/\bMyrrh/Mirr/g' $1
+  sed -i 's/\bmyrrh/mirr/g' $1
+
+  # mystērium -> mistērium
+  sed -i 's/\bMystēri/Mistēri/g' $1
+  sed -i 's/\bmystēri/mistēri/g' $1
+
   # nycticorax -> nicticorax
-  sed -i 's/Nycticora/Nicticora/g' $1
-  sed -i 's/nycticora/nicticora/g' $1
+  sed -i 's/\bNycticora/Nicticora/g' $1
+  sed -i 's/\bnycticora/nicticora/g' $1
+
+  # paralyticus -> paraliticus
+  sed -i 's/\bParalytic/Paralitic/g' $1
+  sed -i 's/\bparalytic/paralitic/g' $1
 
   # synagōga -> sinagōga
   sed -i 's/Synagōg/Sinagōg/g' $1
