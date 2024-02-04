@@ -9,9 +9,9 @@ function _replace() {
   # Alphaeus -> Alfeus
   sed -i 's/\bAlphae/Alfe/g' $1
 
-  # Asaph -> Āsāf
-  sed -i 's/\ASAPH\b/ĀSĀF/g' $1
-  sed -i 's/\bAsaph\b/Āsāf/g' $1
+  # Asaph -> ASĀF
+  sed -i 's/\ASAPH\b/ASĀF/g' $1
+  sed -i 's/\bAsaph\b/Asāf/g' $1
 
   # Beelphegor -> Baalfegor
   sed -i 's/\bBeelphegor\b/Baalfegor/g' $1
@@ -81,6 +81,9 @@ function _replace() {
 
   # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   # Normalize "y" to "i" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  # Assyria -> Assiria
+  sed -i 's/\bAssyri/Assiri/g' $1
 
   # abyssus -> abissus
   sed -i 's/\bAbyss/Abiss/g' $1
@@ -152,6 +155,9 @@ function _replace() {
 
   # tympanum -> timpanum
   sed -i 's/\btympan/timpan/g' $1
+
+  # Syria -> Siria
+  sed -i 's/\bSyri/Siri/g' $1
 
   # Syrofoeniss -> Sirofoeniss
   sed -i 's/\bSyrofoeniss/Sirofoeniss/g' $1
