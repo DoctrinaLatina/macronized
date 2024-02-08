@@ -1,4 +1,4 @@
-Original,OriginalStem,New,NewStem
+OldWord,OldStem,NewWord,NewStem
 abiectiō,abiectiō,abjectiō,abjectiō
 abiciō,abic,abjiciō,abjici
 abiciō,abiēc,abjiciō,abjēc
@@ -59,7 +59,7 @@ Iordānis,Iordān,Jordānis,Jordān
 Iōsēph,Iōsēph,Jōsēf,Jōsēf
 iubar,iubar,jubar,jubar
 iubeō,iub,jubeō,jub
-iūbilātiō, iūbilātiō,jūbilātiō,jūbilātiō
+iūbilātiō,iūbilātiō,jūbilātiō,jūbilātiō
 iūbilō,jūbil,jūbilō,jūbil
 iūcundus,iūcund,jūcundus,jūcund
 Iūda,Iūda,Jūda,Jūda
