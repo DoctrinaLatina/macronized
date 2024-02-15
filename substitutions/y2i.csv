@@ -1,0 +1,31 @@
+OldWord,OldStem,NewWord,NewStem
+Assyria,Assyri,Assiria,Assiri
+abyssus,abyss,abissus,abiss
+Aegyptum,Aegypt,Aegiptum,Aegipt
+Babylōn,Babylōn,Babilōn,Babilōn
+cymbalum,cymbal,cimbalum,cimbal
+cynomia,cynomi,cinomia,cinomi
+Hierosolyma,Hierosolym,Hierosolima,Hierosolim
+Jerosolyma,Jerosolym,Jerosolima,Jerosolim
+Hierosolymītae,Hierosolymīt,Hierosolimītae,Hierosolimītae
+Jerosolymītae,Jerosolymīt,Jerosolimītae,Jerosolimītae
+Hierosolymītānus,Hierosolymītān,Hierosolimītānus,Hierosolimītān
+Jerosolymītānus,Jerosolymītān,Jerosolimītānus,Jerosolimītān
+hierosolymītānus,hierosolymītān,Hierosolimītānus,Hierosolimītān
+jerosolymītānus,jerosolymītān,Jerosolimītānus,Jerosolimītān
+hymnus,hymn,himnus,himn
+hypocrita,hypocrit,hipocrita,hipocrit
+hyssōpum,hyssōp,hissōpum,hissōp
+lacryma,lacrym,lacrima,lacrim
+myrrha,myrr,mirrha,mirr
+mystērium,mystēri,mistērium,mistēri
+nycticorax,nycticora,nicticorax,nicticora
+paralyticus,paralytic,paraliticus,paralitic
+synagōga,synagōg,sinagōga,sinagōg
+Tyrus,Tyr,Tirus,Tir
+tympanum,tympan,timpanum,timpan
+Syria,Syri,Siria,Siri
+Syrophoeniss,Syrophoeniss,Sirophoeniss,Sirophoeniss
+Syrofoeniss,Syrofoeniss,Sirofoeniss,Sirofoeniss
+  # Syrofoeniss -> Sirofoeniss
+  sed -i 's/\bSyrofoeniss/Sirofoeniss/g' $1
