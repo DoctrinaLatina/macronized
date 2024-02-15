@@ -25,7 +25,5 @@ synagōga,synagōg,sinagōga,sinagōg
 Tyrus,Tyr,Tirus,Tir
 tympanum,tympan,timpanum,timpan
 Syria,Syri,Siria,Siri
-Syrophoeniss,Syrophoeniss,Sirophoeniss,Sirophoeniss
-Syrofoeniss,Syrofoeniss,Sirofoeniss,Sirofoeniss
-  # Syrofoeniss -> Sirofoeniss
-  sed -i 's/\bSyrofoeniss/Sirofoeniss/g' $1
+Syrophoenissa,Syrophoeniss,Sirophoenissa,Sirophoeniss
+Syrofoenissa,Syrofoeniss,Sirofoenissa,Sirofoeniss
