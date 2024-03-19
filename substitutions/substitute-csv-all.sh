@@ -14,4 +14,5 @@ $D/substitution-csv.sh $D/names.csv $1
 $D/substitution-csv.sh $D/ph2f.csv $1
 $D/substitution-csv.sh $D/pronunciation.csv $1
 $D/substitution-csv.sh $D/spelling.csv $1
+$D/substitution-csv.sh $D/ui2uj.csv $1
 $D/substitution-csv.sh $D/y2i.csv $1
