@@ -1,6 +1,10 @@
 OldWord,OldStem,NewWord,NewStem
+alicui,alicui,alicuj,alicuj
+alicuius,alicuius,alicujus,alicujus
 cui,cui\b,cuj,cuj
 cuius,cuius,cujus,cujus
+eccui,eccui,eccuj,eccuj
+eccuius,eccuius,eccujus,eccujus
 hui,hui\b,huj,huj
 huic,huic\b,hujc,hujc
 huius,huius,hujus,hujus
