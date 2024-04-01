@@ -1,9 +1,9 @@
 OldWord,OldStem,NewWord,NewStem
-Galīlaea,Galīlae,Galilaea,Galilae
-Hēlīās,Hēlīās,Ēlīās,Ēlīās
-Hēlīas,Hēlīas,Ēlīās,Ēlīās
-Israel,Israel,Isrāhēl,Isrāhēl
-Isrāēl,Isrāēl,Isrāhēl,Isrāhēl
-Moses,Mos,Mōses,Mōs
-Sion,Sion,Siōn,Siōn
-Sīōn,Sīōn,Siōn,Siōn
+Galīlaea,\bGalīlae,Galilaea,Galilae
+Hēlīās,\bHēlīās,Ēlīās,Ēlīās
+Hēlīas,\bHēlīas,Ēlīās,Ēlīās
+Israel,\bIsrael,Isrāhēl,Isrāhēl
+Isrāēl,\bIsrāēl,Isrāhēl,Isrāhēl
+Moses,\bMos,Mōses,Mōs
+Sion,\bSion,Siōn,Siōn
+Sīōn,\bSīōn,Siōn,Siōn

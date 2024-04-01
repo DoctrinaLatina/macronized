@@ -1,14 +1,14 @@
 OldWord,OldStem,NewWord,NewStem
-abs tē,abs tē,ā tē,ā tē
-annūntiō,annūnti,adnūntiō,adnūnti
-appropinquō,appropinqu,adpropinquō,adpropinqu
-exurgō,exurg,exsurgō,exsurg
-exultātiō,exultātiō,exsultātiō,exsultātiō
-exultō,exult,exsultō,exsult
-iis,iis,eīs,eīs
-iīs,iīs,eīs,eīs
-intelligō,intelli,intellegō,intelle
-mētībor,mētībor,mētiar,mētiar
-metibor,metibor,mētiar,mētiar
-sēmetipse,sēmetip,sēmet ipse,sēmet ip
-semetipse,semetip,sēmet ipse,sēmet ip
+abs tē,\babs tē\b,ā tē,ā tē
+annūntiō,\bannūnti,adnūntiō,adnūnti
+appropinquō,\bappropinqu,adpropinquō,adpropinqu
+exurgō,\bexurg,exsurgō,exsurg
+exultātiō,\bexultātiō,exsultātiō,exsultātiō
+exultō,\bexult,exsultō,exsult
+iis,\biis,eīs,eīs
+iīs,\biīs,eīs,eīs
+intelligō,\bintelli,intellegō,intelle
+mētībor,\bmētībor,mētiar,mētiar
+metibor,\bmetibor,mētiar,mētiar
+sēmetipse,\bsēmetip,sēmet ipse,sēmet ip
+semetipse,\bsemetip,sēmet ipse,sēmet ip

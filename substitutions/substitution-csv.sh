@@ -13,16 +13,16 @@ function _replace() {
   INPUT=$2
   while IFS="," read -r OLDWORD OLDSTEM NEWWORD NEWSTEM
   do
-    echo "Replacing \"$OLDWORD\" ($OLDSTEM-) with \"$NEWWORD\" ($NEWSTEM-)"
+    echo "Replacing \"$OLDWORD\" ($OLDSTEM) with \"$NEWWORD\" ($NEWSTEM)"
 
     UPOLDSTEM=${OLDSTEM^}
     UPNEWSTEM=${NEWSTEM^}
     CAPSOLDSTEM=${OLDSTEM^^}
     CAPSNEWSTEM=${NEWSTEM^^}
 
-    sed -i "s/\b$OLDSTEM/$NEWSTEM/g" $INPUT
-    sed -i "s/\b$UPOLDSTEM/$UPNEWSTEM/g" $INPUT
-    sed -i "s/\b$CAPSOLDSTEM/$CAPSNEWSTEM/g" $INPUT
+    sed -i "s/$OLDSTEM/$NEWSTEM/g" $INPUT
+    sed -i "s/$UPOLDSTEM/$UPNEWSTEM/g" $INPUT
+    sed -i "s/$CAPSOLDSTEM/$CAPSNEWSTEM/g" $INPUT
   done < <(tail -n +2 $CSV)
 }
 
