@@ -17,7 +17,8 @@ function _replace() {
 
     UPOLDSTEM=${OLDSTEM^}
     UPNEWSTEM=${NEWSTEM^}
-    CAPSOLDSTEM=${OLDSTEM^^}
+    CAPSOLDSTEM1=${OLDSTEM^^}
+    CAPSOLDSTEM=${CAPSOLDSTEM1//'\B'/'\b'}
     CAPSNEWSTEM=${NEWSTEM^^}
 
     sed -i "s/$OLDSTEM/$NEWSTEM/g" $INPUT
