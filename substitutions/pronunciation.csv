@@ -1,7 +1,7 @@
 OldWord,OldStem,NewWord,NewStem
-āmēn,āmēn,āmen,āmen
-mihi,mihi,mihī,mihī
-tibi,tibi,tibī,tibī
-sibi,sibi,sibī,sibī
-ibi,ibi,ibī,ibī
-ubi,ubi,ubī,ubī
+āmēn,\bāmēn\b,āmen,āmen
+mihi,\bmihi\b,mihī,mihī
+tibi,\btibi\b,tibī,tibī
+sibi,\bsibi\b,sibī,sibī
+ibi,\bibi\b,ibī,ibī
+ubi,\bubi\b,ubī,ubī
