@@ -1,13 +1,13 @@
-\documentclass[10pt]{article}
+\documentclass[10pt,openany,oneside]{book}
 
 \usepackage[
-  papersize={8.5in,11in},
-  layout=letterpaper,
-  right=1.5in,
-  left=1.5in,
-  top=0.75in,
-  bottom=0.75in,
-  marginparwidth=0.4in,
+  paperwidth=6.08in,
+  paperheight=8.52in,
+  right=0.75in,
+  left=0.75in,
+  top=1.0in,
+  bottom=1.0in,
+  marginparwidth=0.2in,
   marginparsep=0.0in
 ]{geometry}
 
@@ -46,20 +46,28 @@
 
 \titleformat{\section}[hang]
   {\addfontfeature{LetterSpace=30.0}\fontseries{mb}\selectfont\centering}
-  {\thesection}{0em}{\fontdimen2\font=10pt #1 }[]
+  {\thesection}{}{\fontdimen2\font=10pt #1 }[]
 
-%\titlespacing{\section}{0pt}{8ex}{6ex}
-\titlespacing{\section}{0pt}{\parskip}{-\parskip}
+\titlespacing{\section}{0pt}{4ex}{4ex}
 
-%\titleformat{\subsection}[runin]
-%  {\fontseries{en}\selectfont}
-%  {\thesubsection}{0em}{\textsuperscript{#1}}[]
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+\renewcommand{\sectionmark}[1]{
+  \markboth{\addfontfeature{LetterSpace=20.0} #1}
+           {\addfontfeature{LetterSpace=20.0} #1}
+}
+
+\fancyhead[CE]{\scriptsize{\rightmark}}
+\fancyhead[CO]{\scriptsize{\rightmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
 
 \setcounter{secnumdepth}{0}
 
 \begin{document}
-
-\pagestyle{empty}
 
 \reversemarginpar
 
