@@ -1,4 +1,4 @@
-\documentclass[10pt,openany,oneside]{book}
+\documentclass[10pt,openany]{book}
 
 \usepackage[
   paperwidth=6.08in,
@@ -8,7 +8,7 @@
   top=1.0in,
   bottom=1.0in,
   marginparwidth=0.2in,
-  marginparsep=0.0in
+  marginparsep=0.1in
 ]{geometry}
 
 \usepackage{fontspec}
@@ -41,16 +41,16 @@
 \usepackage[skip=10pt plus1pt, indent=0pt]{parskip}
 
 \usepackage[explicit]{titlesec}
-\usepackage{marginnote}
 \usepackage{needspace}
 
 \titleformat{\section}[hang]
   {\addfontfeature{LetterSpace=30.0}\fontseries{mb}\selectfont\centering}
   {\thesection}{}{\fontdimen2\font=10pt #1 }[]
 
-\titlespacing{\section}{0pt}{4ex}{4ex}
+\titlespacing{\section}{0pt}{3ex}{4ex}
 
 \usepackage{fancyhdr}
+\usepackage{extramarks}
 \pagestyle{fancy}
 \fancyhf{}
 
@@ -59,16 +59,84 @@
            {\addfontfeature{LetterSpace=20.0} #1}
 }
 
-\fancyhead[CE]{\scriptsize{\rightmark}}
-\fancyhead[CO]{\scriptsize{\rightmark}}
+\fancyhead[C]{\scriptsize{\firstrightmark}}
+%\fancyhead[CO]{\scriptsize{\rightmark}}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.0pt}
 \renewcommand{\footrulewidth}{0.0pt}
+
+\usepackage{graphicx}
+\graphicspath{ {../images/} }
 
 \setcounter{secnumdepth}{0}
 
 \begin{document}
 
-\reversemarginpar
+% TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty} 
+\begin{center}
+\topskip0pt
+\vspace*{\fill}
+{\huge\bfseries\addfontfeature{LetterSpace=10.0} LIBER PSALMŌRUM}
+\vspace{2ex}
 
+{\huge\bfseries\addfontfeature{LetterSpace=10.0} DĀVĪDIS}
+\vspace{6ex}
+
+{\large\bfseries\addfontfeature{LetterSpace=10.0} CUM APICIBUS}
+\vspace{8ex}
+
+\vspace*{\fill}
+\end{center}
+\newpage
+
+% INFO PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty} 
+\begin{flushleft}
+\topskip0pt
+%\vspace*{\fill}
+\vspace{8ex}
+\begin{footnotesize}
+\noindent
+Liber Psalmorum Davidis Cum Apicibus, build date: \today
+
+\noindent
+This is a free and unencumbered work released into the public domain.
+
+\noindent
+Anyone is free to copy, modify, publish, use, sell, or distribute this work, either in print or digital form, for any purpose, commercial or non-commercial, and by any means.
+
+\noindent
+In jurisdictions that recognize copyright laws, the author or authors of this work dedicate any and all copyright interest in the work to the public domain. We make this dedication for the benefit of the public at large and to the detriment of our heirs and successors. We intend this dedication to be an overt act of relinquishment in perpetuity of all present and future rights to this document under copyright law.
+
+\noindent
+THE WORK IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE WORK OR THE USE OR OTHER DEALINGS IN THE WORK.
+\vspace{4ex}
+
+\noindent
+For further information, comments, questions, or corrections, please visit \textbf{doctrinalatina.com}.
+
+\end{footnotesize}
+\vspace*{\fill}
+\end{flushleft}
+\newpage
+
+% INTRO PRAYER PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} 
+\begin{center}
+\topskip0pt
+\vspace*{\fill}
+
+\includegraphics[scale=0.25]{david.png}
+
+\vspace*{\fill}
+\end{center}
+
+\newpage
+
+% BEGIN PSALMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\pagenumbering{arabic}
 \begin{flushleft}
