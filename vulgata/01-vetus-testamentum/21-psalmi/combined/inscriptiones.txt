@@ -59,7 +59,7 @@
 61 ^ IN FĪNEM PRŌ IDITHUN PSALMUS DĀVĪD ^ Unto the end, for Idithun, a psalm of David
 62 ^ PSALMUS DĀVĪD CUM ESSET IN DĒSERTŌ IDŪMAEAE ^ A psalm of David while he was in the desert of Edom
 63 ^ IN FĪNEM PSALMUS DĀVĪD:^Unto the end, a psalm for David
-64 ^ IN FĪNEM PSALMUS DĀVĪD CANTICUM JĒREMĪAE ET HEZECHIEL POPULŌ TRĀNSMIGRĀTIŌNIS CUM INCIPERENT EXĪRE ^ To the end, a psalm of David, the canticle of Jeremias and Ezechiel to the people of the captivity, when they began to go out
+64 ^ IN FĪNEM PSALMUS DĀVĪD CANTICUM JĒREMĪAE ET HEZECHIEL POPULŌ TRANSMIGRĀTIŌNIS CUM INCIPERENT EXĪRE ^ To the end, a psalm of David, the canticle of Jeremias and Ezechiel to the people of the captivity, when they began to go out
 65 ^ IN FĪNEM CANTICUM PSALMĪ RESURRĒCTIŌNIS ^ Unto the end, a canticle of a psalm of the resurrection
 66 ^ IN FĪNEM IN HIMNĪS PSALMUS CANTICĪ DĀVĪD ^ Unto the end, in hymns, a psalm of a canticle for David
 67 ^ IN FĪNEM PSALMUS CANTICĪ IPSĪ DĀVĪD ^ Unto the end, a psalm of a canticle for David himself
