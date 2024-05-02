@@ -128,8 +128,8 @@ tex_head = r"""% Generated using Python, do not hand edit!
 }
 
 \fancyhead[C]{\scriptsize{\emph\firstrightmark}}
-\fancyhead[LO]{\scriptsize{\thepage}}
-\fancyhead[RE]{\scriptsize{\thepage}}
+\fancyhead[LO]{\small{\thepage}}
+\fancyhead[RE]{\small{\thepage}}
 \renewcommand{\headrulewidth}{0.0pt}
 \renewcommand{\footrulewidth}{0.0pt}
 
