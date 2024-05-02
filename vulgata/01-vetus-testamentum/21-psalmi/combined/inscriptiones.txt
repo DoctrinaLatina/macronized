@@ -139,7 +139,7 @@
 141 ^ INTELLĒCTUS DĀVĪD CUM ESSET IN SPĒLUNCĀ ŌRĀTIŌ ^ Of understanding for David, a prayer when he was in the cave
 142 ^ PSALMUS DĀVĪD QUANDŌ PERSEQUĒBĀTUR EUM ABSALOM FĪLIUS EJUS ^ A psalm of David, when his son Absalom pursued him
 143 ^ PSALMUS DĀVĪD ADVERSUS GOLIAD ^ A psalm of David against Goliath
-144 ^ LAUDĀTIŌ IPSĪ DĀVĪD ^ Praise, for David himself
+144 ^ Laudātiō ipsī Dāvīd ^ Praise, for David himself
 145 ^ ALLĒLŪIA AGGAEĪ ET ZACHARĪAE ^ Alleluia, of Aggeus and Zacharias
 146 ^ ALLĒLŪIA ^ Alleluia
 147 ^ ALLĒLŪIA ^ Alleluia

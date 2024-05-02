@@ -31,20 +31,28 @@ def ReadCSV(file_path, la, en):
 dir_fonts = "./../fonts"
 dir_images = "./../images"
 
-def WriteTexSection(f, title, la, en, is_numbered=True):
-  verses = sorted(la, key = int)
-
+def WriteTexSection(f, la, en, title="", inscription="", is_numbered=True):
   tex_section = r"""
   \pagebreak[3]\section{$TITLE}"""
+  tex_inscription = r"""
+  \begin{center}
+  \emph{\scriptsize $INSCRIPTION }\vspace{0.06in}
+  \end{center}
+  """
   tex_verse = r"{$^\textsuperscript{\emph $VERSE}$}"
   tex_line_la = r"""
-  \begin{absolutelynopagebreak} $TEX_VERSE { $LA }\newline"""
+  \begin{absolutelynopagebreak} \hskip0.05in $TEX_VERSE { $LA }\newline"""
   tex_line_en = r"""
   \noindent\emph{\scriptsize $EN }\end{absolutelynopagebreak}\vspace{0.04in}
   """
 
-  f.write(tex_section.replace(r"$TITLE", title))
+  if title:
+    f.write(tex_section.replace(r"$TITLE", title))
 
+  if inscription:
+    f.write(tex_inscription.replace(r"$INSCRIPTION", inscription))
+
+  verses = sorted(la, key = int)
   for verse in verses:
     line = tex_line_la.replace("$LA", la[verse]) + \
            tex_line_en.replace("$EN", en[verse])
@@ -107,8 +115,7 @@ tex_head = r"""% Generated using Python, do not hand edit!
 \titleformat{\section}[hang]
   {\addfontfeature{LetterSpace=30.0}\bfseries\centering}
   {\thesection}{}{\fontdimen2\font=10pt #1 }[]
-
-\titlespacing{\section}{0pt}{3ex}{4ex}
+\titlespacing{\section}{0ex}{1ex}{0ex}
 
 \usepackage{fancyhdr}
 \usepackage{extramarks}
@@ -121,8 +128,8 @@ tex_head = r"""% Generated using Python, do not hand edit!
 }
 
 \fancyhead[C]{\scriptsize{\emph\firstrightmark}}
-\fancyhead[LO]{\hskip0.05in \scriptsize{\thepage}}
-\fancyhead[RE]{\scriptsize{\emph\thepage} \hskip0.05in}
+\fancyhead[LO]{\scriptsize{\thepage}}
+\fancyhead[RE]{\scriptsize{\thepage}}
 \renewcommand{\headrulewidth}{0.0pt}
 \renewcommand{\footrulewidth}{0.0pt}
 
@@ -141,25 +148,19 @@ psalms_root_dir = "./../vulgata/01-vetus-testamentum/21-psalmi/combined/"
 antifonae_la = {}
 antifonae_en = {}
 ReadCSV(psalms_root_dir + "antifonae.txt", antifonae_la, antifonae_en)
-print(antifonae_la)
-print(antifonae_en)
 
-inscriptiones_la = {}
-inscriptiones_en = {}
-ReadCSV(psalms_root_dir + "inscriptiones.txt", inscriptiones_la, inscriptiones_en)
-print(inscriptiones_la)
-print(inscriptiones_en)
+inscription_la = {}
+inscription_en = {}
+ReadCSV(psalms_root_dir + "inscriptiones.txt", inscription_la, inscription_en)
 
 psalm_la = {}
 psalm_en = {}
 ReadCSV(psalms_root_dir + "144.txt", psalm_la, psalm_en)
-print(psalm_la)
-print(psalm_en)
 
 f = open("out.tex", "w")
 f.write(tex_head + "\n")
 
-WriteTexSection(f, "PSALMUS 144", psalm_la, psalm_en)
+WriteTexSection(f, psalm_la, psalm_en, "PSALMUS 144", inscription_la['144'])
 
 f.write(tex_tail + "\n")
 f.close()
