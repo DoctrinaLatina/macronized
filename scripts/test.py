@@ -33,10 +33,11 @@ dir_images = "./../images"
 
 def WriteTexSection(f, la, en, title="", inscription="", is_numbered=True):
   tex_section = r"""
-  \pagebreak[3]\section{$TITLE}"""
+  \pagebreak[3]\section{$TITLE}
+  """
   tex_inscription = r"""
   \begin{center}
-  \emph{\scriptsize $INSCRIPTION }\vspace{0.06in}
+  \emph{\scriptsize $INSCRIPTION }
   \end{center}
   """
   tex_verse = r"{$^\textsuperscript{\emph $VERSE}$}"
@@ -51,6 +52,9 @@ def WriteTexSection(f, la, en, title="", inscription="", is_numbered=True):
 
   if inscription:
     f.write(tex_inscription.replace(r"$INSCRIPTION", inscription))
+    f.write(r"\vspace{0.06in}")
+  else:
+    f.write(r"\vspace{0.18in}")
 
   verses = sorted(la, key = int)
   for verse in verses:
@@ -78,8 +82,9 @@ tex_head = r"""% Generated using Python, do not hand edit!
   paperheight=8.52in,
   right=0.75in,
   left=0.75in,
-  top=1.0in,
-  bottom=0.5in
+  top=0.9in,
+  bottom=0.5in,
+  headsep=0.12in,
 ]{geometry}
 
 \usepackage{fontspec}
@@ -112,10 +117,10 @@ tex_head = r"""% Generated using Python, do not hand edit!
 \usepackage[explicit]{titlesec}
 \usepackage{needspace}
 
-\titleformat{\section}[hang]
-  {\addfontfeature{LetterSpace=30.0}\bfseries\centering}
-  {\thesection}{}{\fontdimen2\font=10pt #1 }[]
-\titlespacing{\section}{0ex}{1ex}{0ex}
+\titleformat{\section}[block]
+  {\addfontfeature{LetterSpace=30.0}\bfseries\filcenter}
+  {\thesection}{}{ #1 }[]
+\titlespacing{\section}{0ex}{2ex}{0ex}
 
 \usepackage{fancyhdr}
 \usepackage{extramarks}
@@ -127,14 +132,85 @@ tex_head = r"""% Generated using Python, do not hand edit!
            {\addfontfeature{LetterSpace=20.0} #1}
 }
 
-\fancyhead[C]{\scriptsize{\emph\firstrightmark}}
+%\fancyhead[C]{}
 \fancyhead[LO]{\small{\thepage}}
+\fancyhead[LE]{\scriptsize{\emph\firstrightmark}}
 \fancyhead[RE]{\small{\thepage}}
+\fancyhead[RO]{\scriptsize{\emph\firstrightmark}}
 \renewcommand{\headrulewidth}{0.0pt}
 \renewcommand{\footrulewidth}{0.0pt}
 
 \setcounter{secnumdepth}{0}
 \begin{document}
+
+  % TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \thispagestyle{empty} 
+  \begin{center}
+  \topskip0pt
+  %\vspace*{\fill}
+    \null
+    \vspace{1.5in}
+  {\huge\bfseries\addfontfeature{LetterSpace=10.0} LIBER PSALMŌRUM}
+  \vspace{2ex}
+
+  {\huge\bfseries\addfontfeature{LetterSpace=10.0} DĀVĪDIS}
+  \vspace{6ex}
+
+  {\large\bfseries\addfontfeature{LetterSpace=10.0} CUM APICIBUS}
+  \vspace{8ex}
+
+  \vspace*{\fill}
+  \end{center}
+  \newpage
+
+  % INFO PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \thispagestyle{empty} 
+  \begin{flushleft}
+  \topskip0pt
+  %\vspace*{\fill}
+  \vspace{8ex}
+  \begin{footnotesize}
+  \noindent
+  Liber Psalmorum Davidis Cum Apicibus, build date: \today
+
+  \noindent
+  This is a free and unencumbered work released into the public domain.
+
+  \noindent
+  Anyone is free to copy, modify, publish, use, sell, or distribute this work, either in print or digital form, for any purpose, commercial or non-commercial, and by any means.
+
+  \noindent
+  In jurisdictions that recognize copyright laws, the author or authors of this work dedicate any and all copyright interest in the work to the public domain. We make this dedication for the benefit of the public at large and to the detriment of our heirs and successors. We intend this dedication to be an overt act of relinquishment in perpetuity of all present and future rights to this document under copyright law.
+
+  \noindent
+  THE WORK IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE WORK OR THE USE OR OTHER DEALINGS IN THE WORK.
+  \vspace{4ex}
+
+  \noindent
+  For further information, comments, questions, or corrections, please visit \textbf{doctrinalatina.com}.
+
+  \end{footnotesize}
+  \vspace*{\fill}
+  \end{flushleft}
+  \newpage
+
+  % INTRO PRAYER PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \thispagestyle{empty}
+  \topskip0pt
+  \null
+
+  \begin{figure}
+    \centering
+    \vspace{1in}
+    \includegraphics[scale=0.25]{david.png}
+  \end{figure}
+
+  \newpage
+
+  % BEGIN PSALMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \clearpage
+  \pagenumbering{arabic}
   \begin{flushleft}"""
 tex_tail = r"""
   \end{flushleft}
@@ -152,15 +228,28 @@ ReadCSV(psalms_root_dir + "antifonae.txt", antifonae_la, antifonae_en)
 inscription_la = {}
 inscription_en = {}
 ReadCSV(psalms_root_dir + "inscriptiones.txt", inscription_la, inscription_en)
+print(inscription_en)
+
+f = open("out.tex", "w")
+
+f.write(tex_head + "\n")
 
 psalm_la = {}
 psalm_en = {}
-ReadCSV(psalms_root_dir + "144.txt", psalm_la, psalm_en)
+for n in range(1, 151):
+  chapter = str(n)
 
-f = open("out.tex", "w")
-f.write(tex_head + "\n")
+  ReadCSV(psalms_root_dir + chapter.zfill(3) + ".txt", psalm_la, psalm_en)
 
-WriteTexSection(f, psalm_la, psalm_en, "PSALMUS 144", inscription_la['144'])
+  inscription = ""
+  if chapter in inscription_la:
+    inscription = inscription_la[chapter]
+
+  WriteTexSection(f, \
+                  psalm_la, \
+                  psalm_en, \
+                  "PSALMUS " + chapter, \
+                  inscription)
 
 f.write(tex_tail + "\n")
 f.close()
