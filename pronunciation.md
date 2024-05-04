@@ -7,15 +7,15 @@
 | Letter  | IPA   | American English Approximation                |
 | ---     | ---   | ---                                           |
 | a       | [æ]   | bad, cat                                      |
-| ā       | [ɑ]   | father, palm                                  |
+| ā       | [ɑː]  | father, palm                                  |
 | e       | [ɛ]   | bed, egg                                      |
-| ē       | [e]   | they, play (open mouth a bit more, mid-front) |
+| ē       | [e:]  | they, play (open mouth a bit more, mid-front) |
 | i       | [ɪ]   | bit, will                                     |
-| ī       | [i]   | machine, reed                                 |
+| ī       | [i:]  | machine, reed                                 |
 | o       | [ɔ]   | soft, thought                                 |
-| ō       | [o]   | no, toe (but no [ʊ] to make [oʊ] diphthong)   |
+| ō       | [o:]  | no, toe (but no [ʊ] to make [oʊ] diphthong)   |
 | u       | [ʊ]   | put, wull                                     |
-| ū       | [u]   | tuba, who                                     |
+| ū       | [u:]  | tuba, who                                     |
 
 ### Diphthongs
 
