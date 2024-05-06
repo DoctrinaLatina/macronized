@@ -22,7 +22,7 @@ def ReadCSV(file_path, la, en):
       key = s[0].strip()
       line_la = s[1].strip()
       line_en = s[2].strip()
-    
+
     la[key] = line_la
     en[key] = line_en
     line = f.readline()
@@ -40,9 +40,9 @@ def WriteTexSection(f, la, en, title="", inscription="", is_numbered=True):
   \emph{\scriptsize $INSCRIPTION }
   \end{center}
   """
-  tex_verse = r"{$^\textsuperscript{\emph $VERSE}$}"
+  tex_verse = r"\hskip0.05in {$^\textsuperscript{\emph $VERSE}$}"
   tex_line_la = r"""
-  \begin{absolutelynopagebreak} \hskip0.05in $TEX_VERSE { $LA }\newline"""
+  \begin{absolutelynopagebreak} $TEX_VERSE { $LA }\newline"""
   tex_line_en = r"""
   \noindent\emph{\scriptsize $EN }\end{absolutelynopagebreak}\vspace{0.04in}
   """
@@ -68,7 +68,7 @@ def WriteTexSection(f, la, en, title="", inscription="", is_numbered=True):
       line = line.replace("$TEX_VERSE", "")
 
     f.write(line)
-  
+
   tex_section_end = r"""
   \Needspace{8\baselineskip}
   """
@@ -144,7 +144,7 @@ tex_head = r"""% Generated using Python, do not hand edit!
 \begin{document}
 
   % TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \thispagestyle{empty} 
+  \thispagestyle{empty}
   \begin{center}
   \topskip0pt
   %\vspace*{\fill}
@@ -164,7 +164,7 @@ tex_head = r"""% Generated using Python, do not hand edit!
   \newpage
 
   % INFO PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \thispagestyle{empty} 
+  \thispagestyle{empty}
   \begin{flushleft}
   \topskip0pt
   %\vspace*{\fill}
@@ -230,7 +230,8 @@ inscription_en = {}
 ReadCSV(psalms_root_dir + "inscriptiones.txt", inscription_la, inscription_en)
 print(inscription_en)
 
-f = open("out.tex", "w")
+file_tex_out = "out.tex"
+f = open(file_tex_out, "w")
 
 f.write(tex_head + "\n")
 
@@ -253,3 +254,6 @@ for n in range(1, 151):
 
 f.write(tex_tail + "\n")
 f.close()
+
+import subprocess
+subprocess.run(["xelatex", "-halt-on-error", file_tex_out])
