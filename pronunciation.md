@@ -6,7 +6,7 @@
 
 | Letter  | IPA   | American English Approximation                |
 | ---     | ---   | ---                                           |
-| a       | [æ]   | bad, cat                                      |
+| a       | [ə]   | comma, bazzar, the                            |
 | ā       | [ɑː]  | father, palm                                  |
 | e       | [ɛ]   | bed, egg                                      |
 | ē       | [e:]  | they, play (open mouth a bit more, mid-front) |
